@@ -191,6 +191,61 @@ docker run -d -e "SPRING_PROFILES_ACTIVE=prod" --name api -p 7030:7030 nhnckin/a
    - 위와 내용 동일
 3. 무중단 배포 완료
 
+```shell
+#!/bin/sh
+
+netstat -tuln | grep ":7030"
+
+if [ $? -eq 0 ]; then
+
+        curl -X POST http://133.186.247.149:7030/api/actuator/status
+        sleep 90
+
+        docker stop api
+        docker rm api
+        docker rmi nhnckin/api
+
+fi
+
+docker pull nhnckin/api
+
+docker run -d --name api -e "SPRING_PROFILES_ACTIVE=prod1" -p 7030:7030 nhnckin/api
+
+# wait spring boot
+docker logs -f api | grep "Starting ApiApplication" &
+
+GREP_PID=$!
+MAX_WAIT_SECONDS=300
+start_time=$(date +%s)
+
+echo "Waiting for Spring Boot application to start..."
+while true; do
+        current_time=$(date +%s)
+        elapsed_time=$((current_time - start_time))
+
+        if [ $elapsed_time -gt $MAX_WAIT_SECONDS ]; then
+                echo "Timed out waiting for the Spring Boot application to start."
+                break
+        fi
+
+        if [ $(docker ps -q --filter "name=api") ]; then
+                sleep 5
+                echo "Checking logs..."
+
+                if docker logs api 2>&1 | grep -q "Starting ApiApplication"; then
+                        echo "Spring Boot application has started."
+                        break;
+                fi
+        else
+                echo "Container stopped or not found."
+                break
+        fi
+done
+
+kill $GREP_PID
+
+sleep 90
+```
 
 ## 구조
 
