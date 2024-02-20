@@ -191,6 +191,14 @@ docker run -d -e "SPRING_PROFILES_ACTIVE=prod" --name api -p 7030:7030 nhnckin/a
    - 위와 내용 동일
 3. 무중단 배포 완료
 
+> ### 중간에 계속해서 시간을 고려해야되는 이유  
+> - Eureka Client Service
+>   - `server.shutdown=graceful` _(DEFAULT = IMMEDIATE)_ ,
+>   - `spring.lifecycle.timeout-per-shutdown-phase=30s`
+>     ![image](https://github.com/nhnacademy-be4-ckin/study-materials/assets/84575041/8d53f92b-907d-4df1-993c-c3f0ff983d6a)
+> - Eureka Server에 등록되는 시간이 존재
+> - [왜 graceful 옵션을 줄까?](https://jackjeong.tistory.com/entry/Spring-Cloud-%EC%97%90%EB%9F%AC%EC%97%86%EC%9D%B4-%EB%AC%B4%EC%A4%91%EB%8B%A8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-retry-graceful-shutdown-Eureka-%EB%93%B1%EB%A1%9D%ED%95%B4%EC%A0%9C-%EC%8B%9C%EA%B0%84%EC%B0%A8%EC%9D%B4%EB%A1%9C-%EC%9D%B8%ED%95%9C-%EC%9D%B5)
+
 ```shell
 #!/bin/sh
 
