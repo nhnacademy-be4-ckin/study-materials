@@ -230,3 +230,5 @@ Connection: keep-alive
 [https://metanetglobal.com/bbs/board.php?bo_table=tech&wr_id=38](https://metanetglobal.com/bbs/board.php?bo_table=tech&wr_id=38)
 
 [https://losskatsu.github.io/it-infra/reverse-proxy/#3-리버스-프록시reverse-proxy-서버란](https://losskatsu.github.io/it-infra/reverse-proxy/#3-%EB%A6%AC%EB%B2%84%EC%8A%A4-%ED%94%84%EB%A1%9D%EC%8B%9Creverse-proxy-%EC%84%9C%EB%B2%84%EB%9E%80)
+
+Edit by [김준현](https://github.com/dduneon)
