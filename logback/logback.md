@@ -87,17 +87,17 @@
         </root>
     </springProfile>
 
+    <!--   개발 환경    -->
     <springProfile name="dev">
         <root level="DEBUG">
             <appender-ref ref="STDOUT"/>
         </root>
+        <!--  쿼리문 로그에 출력되어 있는 파라미터에 바인딩 되는 값을 알 수 있음  -->
+        <logger name="org.hibernate.type.descriptor.sql" additivity="false">
+            <level value = "TRACE" />
+            <appender-ref ref="STDOUT"/>
+        </logger>
     </springProfile>
-
-    <!--  쿼리문 로그에 출력되어 있는 파라미터에 바인딩 되는 값을 알 수 있음  -->
-    <logger name="org.hibernate.type.descriptor.sql" additivity="false">
-        <level value = "TRACE" />
-        <appender-ref ref="STDOUT"/>
-    </logger>
 ```
 
 ## 최종 logback-spring.xml
