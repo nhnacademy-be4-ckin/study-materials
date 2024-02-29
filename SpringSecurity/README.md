@@ -2,7 +2,7 @@
 Spring 기반 애플리케이션을 위해 선언적 보안 기능을 제공하는 보안 프레임워크 \
 Servlet Filter (Servlet 기반 애플리케이션) 및 AOP 기반
 
-개발자 : Security가 제공하는 Filter와 설정을 커스텀 하여 원하는 인증 절차를 개발
+-> 개발자가 해야 할 일 : Security가 제공하는 Filter와 설정을 커스텀 하여 원하는 인증 절차를 개발
 
 ### 인증 (Authentication)
 자신이 누구라고 주장하는 주체를 확인하는 프로세스
@@ -247,6 +247,13 @@ public interface UserDetails extends Serializable {
 ```
 
 ### 6. SecurityContextHolder
+Security 내에서 인증된 ``Authentication``을 저장하여 ``ThreadLocal``에 저장됨\
+https://velog.io/@codren/thymeleaf-extras-springsecurity-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC
 
+## References
+
+---
+- https://mangkyu.tistory.com/76
+- https://nhnacademy.dooray.com/share/pages/R2NRPz_ORHGlzXfsfXacTw/3533125766490731828
 
 
