@@ -20,7 +20,8 @@
 
 ## **Spring Batch 기본 구조**
 
-![Untitled (1)](https://github.com/nueag/nhn-academy/assets/93987703/c3e85172-d266-4a8c-af03-1822a65f0146)
+![Untitled (1)](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/9d1cbe30-4acf-4925-9e28-7c5b16e498ff)
+
 
 - 스프링 배치는 최소 한 개 이상의 Job을 생성할 수 있고,
 - 하나의 Job은 여러개의 step으로 구성될 수 있다.
@@ -37,7 +38,8 @@ spring.batch.jdbc.initialize-schema=always
 
 </aside>
 
-![Untitled (2)](https://github.com/nueag/nhn-academy/assets/93987703/9ea77e9a-2cf1-4fc0-876d-446d7eaad6d1)
+![Untitled (2)](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/e6f433ad-3b53-4d60-9f30-f910ce0a6023)
+
 
 1. Spring Batch의 메타 데이터는 다음과 같은 내용들을 담고 있다.
 - 이전에 실행한 Job이 어떤 것들이 있는지
@@ -227,13 +229,14 @@ public class DataSourceConfig {
 
 ### Chunk 프로세싱
 
-    100개의 로우 데이터를 한 번에 처리하는 것은 가능하지만, 처리해야할 데이터의 개수가 100만 개라고 했을때는 어떨까? 100만 개의 데이터를 한 번에 처리하는 것은 불가능하다.  (여러 문제; 커넥션이 길어지고 메모리에 모든 데이터를 올려야 하는 문제 등)
-    그렇기 때문에 큰 데이터의 경우, chunk단위로 데이터를 분할해서 처리하는 것이 바람직하다.  100만 개의 데이터를 1,000개씩 잘라서 처리하는 것이 청크 프로세싱이라고 할 수 있다. 
+    100개의 로우 데이터를 한 번에 처리하는 것은 가능하지만, 처리해야할 데이터의 개수가 100만 개라고 했을때는 어떨까? 
+    100만 개의 데이터를 한 번에 처리하는 것은 불가능하다.  (여러 문제; 커넥션이 길어지고 메모리에 모든 데이터를 올려야 하는 문제 등)
+    그렇기 때문에 큰 데이터의 경우, chunk단위로 데이터를 분할해서 처리하는 것이 바람직하다. 
+    100만 개의 데이터를 1,000개씩 잘라서 처리하는 것이 청크 프로세싱이라고 할 수 있다. 
 
-![Untitled](https://github.com/nueag/nhn-academy/assets/93987703/15dd0f6c-8dce-4772-a4f4-fccc7832582b)
+![Untitled](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/81d6758f-8d24-4f4a-9fca-0f2dac680175)
 
-![img1 daumcdn](https://github.com/nueag/nhn-academy/assets/93987703/d12be242-25a2-473e-8e13-a0cfd4defce2)
-
+![img1 daumcdn](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/03f66aed-3245-41f7-bd29-7a3c0e9da59f)
 
     청크 단위로 읽고, 처리하고, 쓰기를 반복한다. 이는 하나의 트랜잭션으로 구성됨.
 
@@ -312,8 +315,7 @@ public class DataSourceConfig {
         - 비동기 방식으로 실행하고 싶으면 `@EnableAsync` 어노테이션을 이용
     - cron표현식으로 주기적인 실행
       
-        ![img1 daumcdn](https://github.com/nueag/nhn-academy/assets/93987703/26d6bcce-afc8-4bf6-a79d-1eb674c71375)
-
+        ![img1 daumcdn](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/ae48d8da-0297-4ecd-bfa0-e6445dcd7dc1)
         
 
 ## MyBaits
@@ -448,26 +450,26 @@ public Step copyFileStep(){
 - **1000건**
     - primary key가 있는 경우
         
-        ![스크린샷 2024-03-04 오후 1 20 16](https://github.com/nueag/nhn-academy/assets/93987703/0d28a9fb-468d-4f71-a790-945976f3be03)
+        ![스크린샷 2024-03-04 오후 1 20 16](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/22b798cd-37c0-4720-8d15-7cd11c6cd184)
 
     - primary key가 없는 경우
         
-        ![스크린샷 2024-03-04 오후 1 22 45](https://github.com/nueag/nhn-academy/assets/93987703/ea02b99b-aac1-421c-8aa2-cbd2acef3554)
-      
+        ![스크린샷 2024-03-04 오후 1 22 45](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/9afc0809-6099-42b2-b8e3-5f644b9695e2)
+
 - **10000건**
     - primary key가 있는 경우
         
-        ![스크린샷 2024-03-04 오후 2 07 28](https://github.com/nueag/nhn-academy/assets/93987703/120b1122-d80b-498a-b945-b49fc8c5528f)
-      
+        ![스크린샷 2024-03-04 오후 2 07 28](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/03e3deee-8e2a-46a0-95fb-d48f9f58f1e8)
+
     - primary key가 없는 경우
         
-        ![스크린샷 2024-03-04 오후 2 01 42](https://github.com/nueag/nhn-academy/assets/93987703/3e5bb976-aaba-4ec8-9c46-370d416dbfce)
-      
+        ![스크린샷 2024-03-04 오후 2 01 42](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/da109f62-cbef-419e-8c05-efc2fb8e1643)
+
 - **100000건**
     - 결과
         
-        ![스크린샷 2024-03-05 오전 12 44 17](https://github.com/nueag/nhn-academy/assets/93987703/bc23f456-1f94-4f04-8bcd-0c4388c3d223)
-    
+        ![스크린샷 2024-03-05 오전 12 44 17](https://github.com/nhnacademy-be4-ckin/study-materials/assets/93987703/3fcc1c4f-9915-4f5a-8570-87d8dd23c9e6)
+
 
 ---
 
